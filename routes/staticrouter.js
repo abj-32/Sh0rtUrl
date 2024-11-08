@@ -12,8 +12,8 @@ staticRouter.get("/login", (req,res)=>{
 });
 
 staticRouter.get("/", async(req,res)=>{
-    // if(!req.user) return res.redirect('/login');
-    const allurls= await URL.find({})
+    if(!req.user) return res.redirect('/login');
+    const allurls= await URL.find({ createdBy:req.user._id})
     return res.render("home",{
         urls:allurls,
     });

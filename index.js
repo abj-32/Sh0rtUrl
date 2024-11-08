@@ -3,7 +3,7 @@ const {connectTOMongoDB}=require('./connect')
 const cookieParser= require('cookie-parser')
 const URL=require('./model/url')
 const path=require('path')
-const {restrictToLoggedInUserOnly,} =require('./middleware/auth')
+const {restrictToLoggedInUserOnly,checkAuth} =require('./middleware/auth')
 
 
 
@@ -38,7 +38,7 @@ app.use(cookieParser());
 
 app.use("/url",restrictToLoggedInUserOnly,urlRoute);
 app.use("/user",userRoute)
-app.use("/",staticRouter);
+app.use("/",checkAuth,staticRouter);
 
 //=======================
 
