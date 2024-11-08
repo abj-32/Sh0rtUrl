@@ -2,8 +2,86 @@
 <html lang="en">
 <head>
     <style>
-        body{
+        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #d3d0d0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #form-div {
+            margin: 20px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            text-align: center;
+            border: 3px solid;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 2px solid #0a0a0a;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #acd5e6;
+        }
+
+        tr:hover {
+            background-color: #73607a;
         }
     </style>
     <meta charset="UTF-8">
@@ -12,9 +90,11 @@
 </head>
 <body>
     <h1>URL SHORTENER</h1>
+
     <% if(locals.id) { %>
-        <p> URL GENERATED : http://localhost:8000/url/<%= id %></p>
+        <p> URL GENERATED : <a href="http://localhost:8000/url/<%= id %>" target="_blank">http://localhost:8000/url/<%= id %></a></p>
     <% } %>
+    
 
     <div id="form-div">
         <form method="POST" action="/url">
